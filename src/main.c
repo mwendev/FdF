@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:09:21 by mwen              #+#    #+#             */
-/*   Updated: 2021/11/20 20:17:19 by mwen             ###   ########.fr       */
+/*   Updated: 2021/11/20 21:13:14 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@ void	set_data(t_fdf *data)
 	data->mouse = NULL;
 }
 
+int	shut_down(t_fdf *data)
+{
+	terminate(NULL, data);
+	return (0);
+}
+
 void	set_listener(t_fdf *data)
 {
 	mlx_hook(data->win, 2, 0, listen_key, data);
 	mlx_hook(data->win, 4, 0, listen_mouse_pressed, data);
 	mlx_hook(data->win, 5, 0, listen_mouse_released, data);
 	mlx_hook(data->win, 6, 0, listen_mouse_moved, data);
+	mlx_hook(data->win, 17, 0, shut_down, data);
 }
 
 int	main(int argc, char **argv)
