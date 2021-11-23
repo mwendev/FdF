@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 13:43:15 by mwen              #+#    #+#             */
-/*   Updated: 2021/11/20 20:17:29 by mwen             ###   ########.fr       */
+/*   Updated: 2021/11/22 02:27:44 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,29 @@ void	draw_pixel(t_fdf *data, t_point p)
 
 void	draw_line(t_fdf *data, t_point from, t_point to)
 {
-	float	dxy[2];
-	int		stepxy[2];
+	float	dxy[4];
 	int		fraction;
 	t_point	dup;
 
 	dxy[0] = fabs((float)to.x - (float)from.x);
 	dxy[1] = fabs((float)to.y - (float)from.y);
-	stepxy[0] = if_yes_or(from.x, to.x);
-	stepxy[1] = if_yes_or(from.y, to.y);
+	dxy[2] = if_yes_or(from.x, to.x);
+	dxy[3] = if_yes_or(from.y, to.y);
 	fraction = dxy[0] - dxy[1];
 	dup_point(from, &dup);
 	while (dup.x != to.x || dup.y != to.y)
 	{
+		process_color(&dup, from, to, dxy);
 		draw_pixel(data, dup);
 		if (fraction * 2 > -dxy[1])
 		{
 			fraction -= dxy[1];
-			dup.x += stepxy[0];
+			dup.x += dxy[2];
 		}
 		else if (fraction * 2 < dxy[0])
 		{
 			fraction += dxy[0];
-			dup.y += stepxy[1];
+			dup.y += dxy[3];
 		}
 	}
 }

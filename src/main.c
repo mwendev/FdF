@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:09:21 by mwen              #+#    #+#             */
-/*   Updated: 2021/11/20 21:13:14 by mwen             ###   ########.fr       */
+/*   Updated: 2021/11/21 23:58:13 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, char **argv)
 	data = malloc(sizeof(t_fdf));
 	if (!data)
 		terminate(ERR_INIT_DATA, NULL);
+	set_data(data);
 	init_data(data, argv[1]);
 	draw(data);
 	set_listener(data);

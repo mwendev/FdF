@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:14:01 by mwen              #+#    #+#             */
-/*   Updated: 2021/11/20 19:41:36 by mwen             ###   ########.fr       */
+/*   Updated: 2021/11/21 16:43:30 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	init_camera(t_fdf *data)
 	int	menu_wid;
 
 	menu_wid = WIDTH / 4;
+	if (!data->map->wid)
+		data->map->wid = 1;
+	if (!data->map->hgt)
+		data->map->hgt = 1;
 	if ((WIDTH - menu_wid) / data->map->wid / 2 < HEIGHT / data->map->hgt / 2)
 		data->cam->zoom = (WIDTH - menu_wid) / data->map->wid / 2;
 	else

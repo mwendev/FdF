@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 23:36:13 by mwen              #+#    #+#             */
-/*   Updated: 2021/11/20 20:22:18 by mwen             ###   ########.fr       */
+/*   Updated: 2021/11/22 11:54:42 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	read_color(char	*hexa)
 	i = 0;
 	while (hexa[i++])
 	{
-		v = (hexa[i] & 0xF) + (hexa[i] >> 6) | ((hexa[i] >> 3) & 0x8);
+		v = ((hexa[i] & 0xF) + (hexa[i] >> 6)) | ((hexa[i] >> 3) & 0x8);
 		color = (color << 4) | (int)v;
 	}
 	free(hexa);
@@ -70,10 +70,8 @@ void	read_line(t_fdf *data, char *line, int y)
 		data->map->p[y][x].y = y;
 		color = ft_split(split[x], ',');
 		data->map->p[y][x].z = ft_atoi(color[0]);
-		if (!color[1] && data->map->p[y][x].z == 0)
+		if (!color[1])
 			data->map->p[y][x].color = GROUND_COL;
-		else if (!color[1])
-			data->map->p[y][x].color = PEAK_COL;
 		else
 			data->map->p[y][x].color = read_color(color[1]);
 		free_split(color);
@@ -87,14 +85,13 @@ void	read_map(t_fdf *data, char *file_name)
 	int		i;
 	char	*line;
 
+	data->map->p = NULL;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		terminate(ERR_OFILE, data);
 	read_size(data, fd);
 	close(fd);
 	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		terminate(ERR_OFILE, data);
 	data->map->p = malloc((data->map->hgt + 1) * sizeof(t_point *));
 	if (!data->map->p)
 		terminate(ERR_INIT_POINT, data);
@@ -106,5 +103,6 @@ void	read_map(t_fdf *data, char *file_name)
 		free(line);
 	}
 	free(line);
+	assign_color(data);
 	close(fd);
 }

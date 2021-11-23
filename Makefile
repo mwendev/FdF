@@ -6,7 +6,7 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 16:41:11 by mwen              #+#    #+#              #
-#    Updated: 2021/11/20 20:47:59 by mwen             ###   ########.fr        #
+#    Updated: 2021/11/22 12:08:15 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ MINILIBX_DIR	=	minilibx/
 HEADERS			=	fdf.h
 
 SRCS_LIST		=	main.c init.c terminate.c read.c draw.c project.c listen.c\
-					listen_utils.c draw_utils.c
+					listen_utils.c draw_utils.c read_utils.c
 SRCS_DIR		=	src/
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
@@ -38,7 +38,7 @@ OBJS_DIR		=	obj/
 OBJS			=	$(addprefix $(OBJS_DIR), $(OBJS_LIST)) $(GNL:.c=.o)
 
 BONUS_LIST		=	main_bonus.c init_bonus.c terminate_bonus.c read_bonus.c\
-					draw_bonus.c project_bonus.c listen_bonus.c\
+					draw_bonus.c project_bonus.c listen_bonus.c read_utils.c\
 					listen_utils_bonus.c draw_utils_bonus.c
 BONUS_DIR		=	bonus/
 BONUS			=	$(addprefix $(BONUS_DIR), $(BONUS_LIST))
