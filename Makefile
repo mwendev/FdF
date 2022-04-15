@@ -6,7 +6,7 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 16:41:11 by mwen              #+#    #+#              #
-#    Updated: 2021/11/22 12:08:15 by mwen             ###   ########.fr        #
+#    Updated: 2022/04/15 17:22:52 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,8 @@ RED				=	\033[0;31m
 RESET			=	\033[0m
 
 .PHONY:			all clean fclean re
+
+.SILENT:
 
 all:			$(NAME)
 

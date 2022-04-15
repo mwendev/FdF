@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 11:18:26 by mwen              #+#    #+#             */
-/*   Updated: 2021/10/28 13:12:59 by mwen             ###   ########.fr       */
+/*   Updated: 2022/04/15 17:22:20 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*store_to_line(char *s)
 	i = 0;
 	while (s[i] != '\n' && s[i] != '\0')
 		i++;
-	line = malloc ((i + 1) * sizeof(char));
+	line = malloc ((i + 2) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -31,7 +31,8 @@ char	*store_to_line(char *s)
 		line[i] = s[i];
 		i++;
 	}
-	line[i] = '\0';
+	line[i] = s[i];
+	line[i + 1] = '\0';
 	return (line);
 }
 
