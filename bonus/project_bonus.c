@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:16:24 by mwen              #+#    #+#             */
-/*   Updated: 2021/11/22 11:54:39 by mwen             ###   ########.fr       */
+/*   Updated: 2022/04/15 17:24:19 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	rotate_x(t_point *p, double rx)
 	int	y;
 
 	y = p->y;
-	p->y = y * cos(rx) + p->z * sin(rx);
-	p->z = -y * sin(rx) + p->z * cos(rx);
+	p->y = y * cos(rx) - p->z * sin(rx);
+	p->z = y * sin(rx) + p->z * cos(rx);
 }
 
 void	rotate_y(t_point *p, double ry)
