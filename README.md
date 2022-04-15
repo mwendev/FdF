@@ -4,7 +4,6 @@
 
 ## Info
 
-Currently supporting Mac_OS only.
 A simple wireframe model representation of 3D landscapes.
 
 - Grade: 125/100
@@ -13,7 +12,8 @@ A simple wireframe model representation of 3D landscapes.
 
 ## How to install and use
 
-- Clone libft into your project folder
+Currently supporting Mac_OS only.
+- Clone FdF into your project folder
 
 ```sh
 git clone https://github.com/mwendev/FdF.git
